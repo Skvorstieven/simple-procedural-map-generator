@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+  margin: 0;
+  background-color: #202020;
+  color: #ffffff;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.App__root {
+  margin: 0;
+  padding: 0;
+}
