@@ -1,4 +1,4 @@
-.App {
+.app {
   text-align: center;
   margin: 0;
   background-color: #202020;
@@ -10,7 +10,7 @@
   padding: 0;
 }
 
-.App__root {
+.app__root {
   margin: 0;
   padding: 0;
 }
