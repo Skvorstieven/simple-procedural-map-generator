@@ -1,16 +1,12 @@
 import * as THREE from 'three'
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls, PerspectiveCamera, } from "@react-three/drei";
-
+import { Environment, MapControls, PerspectiveCamera, } from "@react-three/drei";
 
 import HexGrid from "../HexGrid/HexGrid";
 import Water from "../Water/Water";
 
 //@ts-expect-error asset import
 import sunsetURL from "../../assets/envmaps/belfast_sunset.hdr";
-
-
-
 
 export default function MapGenerator(
   props: {
@@ -33,7 +29,7 @@ export default function MapGenerator(
       <pointLight position={[40, 40, 20]} intensity={1} color={new THREE.Color(ambienLightColor)}/>
       <HexGrid hexesData={hexesData} waterHeight={waterHeight} color={new THREE.Color(hexColor)}/>
       <Water size={size} waterHeight={waterHeight} color={new THREE.Color(waterColor)}/>
-      <OrbitControls autoRotate={autoRotate} autoRotateSpeed={0.5}/>
+      <MapControls autoRotate={autoRotate} autoRotateSpeed={0.5} />
     </Canvas>
   );
 }
