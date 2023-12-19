@@ -6,7 +6,6 @@ import { Environment, OrbitControls, PerspectiveCamera, } from "@react-three/dre
 import HexGrid from "../HexGrid/HexGrid";
 import Water from "../Water/Water";
 
-//@ts-expect-error asset import
 import sunsetURL from "../../assets/envmaps/belfast_sunset.hdr";
 
 
