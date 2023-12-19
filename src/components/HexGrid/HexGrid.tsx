@@ -2,9 +2,9 @@ import { Vector2 } from "three";
 import { createNoise2D } from 'simplex-noise';
 import { Cylinder, } from "@react-three/drei";
 
-export default function HexGrid(props: { size: number, waterHeight: number, heightScale: number }) {
+export default function HexGrid(props: { size: number, waterHeight: number, heightScale: number, color: THREE.Color}) {
 
-  const { size, waterHeight, heightScale } = props;
+  const { size, waterHeight, heightScale, color } = props;
 
   function Hexagon(props: { x: number, y: number, height: number }) {
     const { x, y, height } = props;
@@ -12,7 +12,7 @@ export default function HexGrid(props: { size: number, waterHeight: number, heig
     return (
       <mesh castShadow receiveShadow>
         <Cylinder args={[1, 1, cylinderHeight, 6, 1, false]} position={[x, height*0.5, y]}>
-          <meshStandardMaterial flatShading color={0xadadad}/>
+          <meshStandardMaterial flatShading color={color}/>
         </Cylinder>
       </mesh>
     )
