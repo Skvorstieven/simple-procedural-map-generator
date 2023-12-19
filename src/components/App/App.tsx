@@ -8,7 +8,7 @@ import MapGenerator from "../MapGenerator/MapGenerator"
 export default function App() {
 
   const config = useControls({
-    size: {value: 30, min: 1, max: 500, step: 1},
+    size: {value: 100, min: 1, max: 500, step: 1},
     waterHeight: {value: 5, min: 1, max: 10, step: 1},
     heightScale: {value: 0.5, min: 0.1, max: 1, step: 0.1},
     noiseScale: {value: 6, min: 1, max: 100, step: 1},
@@ -31,7 +31,7 @@ export default function App() {
         const position = convertTileToPosition(x, y);
   
         if(position.length() > config.size-2) continue;
-        const noiseScale = config.noiseScale/100;
+        const noiseScale = config.noiseScale/500;
         const noise = (createNoise(x*noiseScale, y*noiseScale) + 1)*config.heightScale;
         const height = Math.pow(noise, 1.5)*10;
   
