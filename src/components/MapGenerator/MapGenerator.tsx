@@ -23,8 +23,8 @@ function Water(props: {size: number, waterHeight: number, color: THREE.Color}) {
         ior={1.1}
         chromaticAberration={0.06}
         anisotropy={0.1}
-        distortion={0}
-        distortionScale={0.3}
+        distortion={1}
+        distortionScale={0.4}
         temporalDistortion={0.5}
         clearcoat={1}
         attenuationDistance={0.5}
