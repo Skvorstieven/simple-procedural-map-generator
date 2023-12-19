@@ -5,7 +5,6 @@ import { Environment, MapControls, PerspectiveCamera, } from "@react-three/drei"
 import HexGrid from "../HexGrid/HexGrid";
 import Water from "../Water/Water";
 
-//@ts-expect-error asset import
 import sunsetURL from "../../assets/envmaps/belfast_sunset.hdr";
 
 export default function MapGenerator(
