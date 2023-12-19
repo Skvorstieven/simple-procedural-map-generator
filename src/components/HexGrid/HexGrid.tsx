@@ -18,7 +18,7 @@ export default function HexGrid(props: { hexesData: { position: { x: number; y: 
 
   // Set the position and scale for each instance
   hexesData.forEach(({ position, height }, index) => {
-    const hexagonHeight = height*0.5 === waterHeight ? height - 1 : height;
+    const hexagonHeight = height <= waterHeight+0.2 && height >= waterHeight-0.2 ? height + 1 : height;
     
     // Create a matrix for each instance
     const matrix = new THREE.Matrix4()
