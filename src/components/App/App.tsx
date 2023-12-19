@@ -8,13 +8,13 @@ import MapGenerator from "../MapGenerator/MapGenerator"
 export default function App() {
 
   const config = useControls({
-    size: {value: 30, min: 1, max: 100, step: 1},
+    size: {value: 30, min: 1, max: 500, step: 1},
     waterHeight: {value: 5, min: 1, max: 10, step: 1},
     heightScale: {value: 0.5, min: 0.1, max: 1, step: 0.1},
     hexColor: '#adadad',
     waterColor: '#0cc48d',
     ambienLightColor: '#f0cd00',
-    autoRotate: true
+    autoRotate: false
   })
 
   function convertTileToPosition(tileX: number, tileY: number) {

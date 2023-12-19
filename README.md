@@ -112,7 +112,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Make so it doesn't refresh hexagons on every control change
+- [x] Make so it doesn't refresh hexagons on every control change
 - [ ] Host somwhere a demo
 - [ ] Use instances for hexagons or merge them to improve performance
 - [ ] Add textures to hexagons
