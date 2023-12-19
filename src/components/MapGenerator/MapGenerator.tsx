@@ -1,25 +1,31 @@
+// Import necessary modules and dependencies from Three.js and react-three/fiber
 import * as THREE from 'three'
 import { Canvas } from "@react-three/fiber";
-import { Environment, MapControls, PerspectiveCamera, } from "@react-three/drei";
+import { Environment, MapControls, PerspectiveCamera } from "@react-three/drei";
 
+// Import custom components for HexGrid and Water
 import HexGrid from "../HexGrid/HexGrid";
 import Water from "../Water/Water";
 
+// Import the URL for the environment map
 import sunsetURL from "../../assets/envmaps/belfast_sunset.hdr";
 
+// Define the MapGenerator component with props
 export default function MapGenerator(
   props: {
-    size: number, 
-    ambienLightColor: string, 
-    waterHeight: number, 
-    waterColor: string, 
-    hexColor: string, 
-    hexesData: {position: {x: number, y: number}, 
-    height: number}[],
-    autoRotate: boolean}) {
+    size: number,  // Size of the map
+    ambienLightColor: string,
+    waterHeight: number,  // Height of the water surface
+    waterColor: string,
+    hexColor: string,
+    hexesData: {position: {x: number, y: number}, height: number}[],
+    autoRotate: boolean // Whether to enable auto-rotation
+  }) {
 
-  const {size, ambienLightColor, waterHeight, waterColor, hexColor, hexesData, autoRotate} = props;
-  
+  // Destructure props for easier access
+  const { size, ambienLightColor, waterHeight, waterColor, hexColor, hexesData, autoRotate } = props;
+
+  // Render the Three.js Canvas with a PerspectiveCamera
   return (
     <Canvas>
       <PerspectiveCamera makeDefault position={[-size-3, size+3, size+3]} />
