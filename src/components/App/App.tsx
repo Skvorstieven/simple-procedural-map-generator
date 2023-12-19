@@ -23,7 +23,7 @@ export default function App() {
   
   const createNoise = createNoise2D();
   
-  function getHexesData() {
+  function generateHexesData() {
     const data = [];
     for(let x = -config.size; x <= config.size; x++) {
       for(let y = -config.size; y <= config.size; y++) {
@@ -48,7 +48,7 @@ export default function App() {
       waterHeight={config.waterHeight}
       waterColor={config.waterColor}
       hexColor={config.hexColor}
-      hexesData={getHexesData()} 
+      hexesData={generateHexesData()} 
       autoRotate={config.autoRotate}/>
     </>
   )
