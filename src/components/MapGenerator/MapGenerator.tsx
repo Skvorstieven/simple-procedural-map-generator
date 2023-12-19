@@ -12,9 +12,18 @@ import sunsetURL from "../../assets/envmaps/belfast_sunset.hdr";
 
 
 
-export default function MapGenerator(props: {size: number, ambienLightColor: string, waterHeight: number, waterColor: string, hexColor: string, hexesData: {position: {x: number, y: number}, height: number}[]}) {
+export default function MapGenerator(
+  props: {
+    size: number, 
+    ambienLightColor: string, 
+    waterHeight: number, 
+    waterColor: string, 
+    hexColor: string, 
+    hexesData: {position: {x: number, y: number}, 
+    height: number}[],
+    autoRotate: boolean}) {
 
-  const {size, ambienLightColor, waterHeight, waterColor, hexColor, hexesData} = props;
+  const {size, ambienLightColor, waterHeight, waterColor, hexColor, hexesData, autoRotate} = props;
   
   return (
     <Canvas>
@@ -24,7 +33,7 @@ export default function MapGenerator(props: {size: number, ambienLightColor: str
       <pointLight position={[40, 40, 20]} intensity={1} color={new THREE.Color(ambienLightColor)}/>
       <HexGrid hexesData={hexesData} waterHeight={waterHeight} color={new THREE.Color(hexColor)}/>
       <Water size={size} waterHeight={waterHeight} color={new THREE.Color(waterColor)}/>
-      <OrbitControls />
+      <OrbitControls autoRotate={autoRotate} autoRotateSpeed={0.5}/>
     </Canvas>
   );
 }

@@ -14,6 +14,7 @@ export default function App() {
     hexColor: '#adadad',
     waterColor: '#0cc48d',
     ambienLightColor: '#f0cd00',
+    autoRotate: true
   })
 
   function convertTileToPosition(tileX: number, tileY: number) {
@@ -41,7 +42,14 @@ export default function App() {
 
   return (
     <>
-    <MapGenerator size ={config.size} ambienLightColor={config.ambienLightColor} waterHeight={config.waterHeight} waterColor={config.waterColor} hexColor={config.hexColor} hexesData={getHexesData()} />
+    <MapGenerator 
+      size ={config.size}
+      ambienLightColor={config.ambienLightColor}
+      waterHeight={config.waterHeight}
+      waterColor={config.waterColor}
+      hexColor={config.hexColor}
+      hexesData={getHexesData()} 
+      autoRotate={config.autoRotate}/>
     </>
   )
 }
