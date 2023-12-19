@@ -112,9 +112,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Make so it doesn't refresh hexagons on every control change
-- [ ] Host somwhere a demo
-- [ ] Use instances for hexagons or merge them to improve performance
+- [x] Use instances for hexagons or merge them to improve performance
+- [ ] Make so it doesn't refresh hexagons on every control change
+- [ ] Host somwhere a demщ
 - [ ] Add textures to hexagons
 - [ ] Use shaders for water(maybe add physics?)
 - [ ] Add additional objects spawning on tiles
