@@ -4,6 +4,19 @@ import { extend } from '@react-three/fiber';
 // Extend the mesh class with the instanced mesh class
 extend({ InstancedMesh: THREE.InstancedMesh });
 
+// Dunction for height correction near water surface to avoid visual glitch
+function heightCorrection(height: number, waterHeight: number) {
+  if(height <= waterHeight+0.2 && height >= waterHeight) {
+    return height + 0.2;
+  }
+  else if(height >= waterHeight-0.2 && height <= waterHeight) {
+    return height - 0.2;
+  }
+  else {
+    return height;
+  }
+}
+
 export default function HexGrid(props: { hexesData: { position: { x: number; y: number }; height: number }[]; waterHeight: number; color: THREE.Color }) {
   const { hexesData, waterHeight, color } = props;
 
@@ -18,7 +31,7 @@ export default function HexGrid(props: { hexesData: { position: { x: number; y: 
 
   // Set the position and scale for each instance
   hexesData.forEach(({ position, height }, index) => {
-    const hexagonHeight = height <= waterHeight+0.2 && height >= waterHeight-0.2 ? height + 0.2 : height;
+    const hexagonHeight = heightCorrection(height, waterHeight);
     
     // Create a matrix for each instance
     const matrix = new THREE.Matrix4()
