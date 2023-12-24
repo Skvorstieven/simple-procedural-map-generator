@@ -6,11 +6,11 @@ extend({ InstancedMesh: THREE.InstancedMesh });
 
 // Dunction for height correction near water surface to avoid visual glitch
 function heightCorrection(height: number, waterHeight: number) {
-  if(height <= waterHeight+0.2 && height >= waterHeight) {
-    return height + 0.2;
+  if(height <= waterHeight+0.1 && height >= waterHeight) {
+    return height + 0.1;
   }
-  else if(height >= waterHeight-0.2 && height <= waterHeight) {
-    return height - 0.2;
+  else if(height >= waterHeight-0.1 && height <= waterHeight) {
+    return height - 0.1;
   }
   else {
     return height;
