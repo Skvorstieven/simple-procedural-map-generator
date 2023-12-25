@@ -16,8 +16,9 @@ export default function App() {
     heightScale: {value: 1, min: 0.1, max: 2, step: 0.05}, // Scale for terrain height
     noiseScale: {value: 10, min: 1, max: 100, step: 1}, // Scale for the noise function
     waterColor: '#0cc48d',
-    ambienLightColor: '#f0cd00',
-    autoRotate: false // Whether to enable auto-rotation
+    ambienLightColor: '#ffffff',
+    autoRotate: false, // Whether to enable auto-rotation
+    sky: false
   });
 
   return (
@@ -29,6 +30,7 @@ export default function App() {
         waterColor={config.waterColor}
         hexesData={generateHexesData(config)} 
         autoRotate={config.autoRotate}
+        showSky={config.sky}
       />
     </>
   )

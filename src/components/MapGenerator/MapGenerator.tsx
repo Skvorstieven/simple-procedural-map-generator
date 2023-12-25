@@ -1,7 +1,7 @@
 // Import necessary modules and dependencies from Three.js and react-three/fiber
 import * as THREE from 'three'
 import { Canvas } from "@react-three/fiber";
-import { Environment, MapControls, PerspectiveCamera } from "@react-three/drei";
+import { Sky, Environment, MapControls, PerspectiveCamera } from "@react-three/drei";
 
 // Import custom components for HexGrid and Water
 import HexGrid from "../HexGrid/HexGrid";
@@ -19,10 +19,11 @@ export default function MapGenerator(
     waterColor: string,
     hexesData: {position: {x: number, y: number}, height: number}[],
     autoRotate: boolean // Whether to enable auto-rotation
+    showSky: boolean
   }) {
 
   // Destructure props for easier access
-  const { size, ambienLightColor, waterHeight, waterColor, hexesData, autoRotate } = props;
+  const { size, ambienLightColor, waterHeight, waterColor, hexesData, autoRotate, showSky } = props;
 
   // Render the Three.js Canvas with a PerspectiveCamera
   return (
@@ -31,6 +32,7 @@ export default function MapGenerator(
       <Environment files={sunsetURL} />
       <ambientLight color={new THREE.Color(ambienLightColor)}/>
       <pointLight position={[40, 40, 20]} intensity={1} color={new THREE.Color(ambienLightColor)}/>
+      {showSky ? <Sky distance={10000} sunPosition={[1, 0.5, 1]}/> : ''}
       <HexGrid hexesData={hexesData} waterHeight={waterHeight} />
       <Water size={size} waterHeight={waterHeight} color={new THREE.Color(waterColor)}/>
       <MapControls autoRotate={autoRotate} autoRotateSpeed={0.5} />
