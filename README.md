@@ -119,6 +119,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Make so it doesn't refresh hexagons on every control change
 - [x] Host somwhere a demo
 - [x] Create different biomes
+- [ ] Add "Generate new" button
 - [ ] Add textures to hexagons
 - [ ] Use shaders for water(maybe add physics?)
 - [ ] Add additional objects spawning on tiles
