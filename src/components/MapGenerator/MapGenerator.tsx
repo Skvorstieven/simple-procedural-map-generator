@@ -28,7 +28,7 @@ export default function MapGenerator(
   // Render the Three.js Canvas with a PerspectiveCamera
   return (
     <Canvas>
-      <PerspectiveCamera makeDefault position={[-size-3, size+3, size+3]} />
+      <PerspectiveCamera makeDefault position={[-size-100, size+100, size+100]} />
       <Environment files={sunsetURL} />
       <ambientLight color={new THREE.Color(ambienLightColor)}/>
       <pointLight position={[40, 40, 20]} intensity={1} color={new THREE.Color(ambienLightColor)}/>
