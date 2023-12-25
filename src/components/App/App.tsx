@@ -11,11 +11,10 @@ export default function App() {
 
   // Use Leva controls to manage configuration settings
   const config = useControls({
-    size: {value: 100, min: 1, max: 500, step: 1}, // Size of the map
+    size: {value: 100, min: 1, max: 300, step: 1}, // Size of the map
     waterHeight: {value: 5, min: 0, max: 30, step: 1}, // Height of the water surface
     heightScale: {value: 1, min: 0.1, max: 2, step: 0.05}, // Scale for terrain height
-    noiseScale: {value: 6, min: 1, max: 100, step: 1}, // Scale for the noise function
-    hexColor: '#adadad',
+    noiseScale: {value: 10, min: 1, max: 100, step: 1}, // Scale for the noise function
     waterColor: '#0cc48d',
     ambienLightColor: '#f0cd00',
     autoRotate: false // Whether to enable auto-rotation
@@ -28,7 +27,6 @@ export default function App() {
         ambienLightColor={config.ambienLightColor}
         waterHeight={config.waterHeight}
         waterColor={config.waterColor}
-        hexColor={config.hexColor}
         hexesData={generateHexesData(config)} 
         autoRotate={config.autoRotate}
       />

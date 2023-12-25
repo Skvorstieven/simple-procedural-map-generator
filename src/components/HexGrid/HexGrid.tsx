@@ -1,12 +1,21 @@
 import * as THREE from 'three';
 import { extend } from '@react-three/fiber';
 import createInstancedMesh from '../../utils/createInstancedMesh';
+import { useControls } from 'leva';
 
 // Extend the mesh class with the instanced mesh class
 extend({ InstancedMesh: THREE.InstancedMesh });
 
-export default function HexGrid(props: { hexesData: { position: { x: number; y: number }; height: number }[]; waterHeight: number; color: THREE.Color }) {
-  const { hexesData, waterHeight, /* color */ } = props;
+export default function HexGrid(props: { hexesData: { position: { x: number; y: number }; height: number }[]; waterHeight: number }) {
+  const config = useControls({
+    sandColor: 'sandybrown',
+    plainColor: 'green',
+    forestColor: 'darkgreen',
+    stoneColor: 'gray',
+    snowColor: 'white',
+  })
+
+  const { hexesData, waterHeight } = props;
 
   const sandHexes = hexesData.filter(({ height }) => height < waterHeight+1);
   const plainHexes = hexesData.filter(({ height }) => height >= waterHeight+1 && height < waterHeight+5);
@@ -14,18 +23,17 @@ export default function HexGrid(props: { hexesData: { position: { x: number; y: 
   const stoneHexes = hexesData.filter(({ height }) => height >= waterHeight+15 && height < waterHeight+20);
   const snowHexes = hexesData.filter(({ height }) => height >= waterHeight+20);
 
-  // Create a buffer geometry for the hexagon
+  // Create a buffer geometry for the hexagons
   const hexagonGeometry = new THREE.CylinderGeometry(1, 1, 1, 6, 1, false);
 
-  // Create a material for the instanced mesh
-  /* const hexagonMaterial = new THREE.MeshStandardMaterial({ flatShading: true, color }); */
-  const sandHexagonMaterial = new THREE.MeshStandardMaterial({ flatShading: true, color: new THREE.Color('sandybrown') });
-  const plainHexagonMaterial = new THREE.MeshStandardMaterial({ flatShading: true, color: new THREE.Color('green') });
-  const forestHexagonMaterial = new THREE.MeshStandardMaterial({ flatShading: true, color: new THREE.Color('darkgreen') });
-  const stoneHexagonMaterial = new THREE.MeshStandardMaterial({ flatShading: true, color: new THREE.Color('gray') });
-  const snowHexagonMaterial = new THREE.MeshStandardMaterial({ flatShading: true, color: new THREE.Color('white') });
+  // Create a materials for the instanced meshes
+  const sandHexagonMaterial = new THREE.MeshStandardMaterial({ flatShading: true, color: new THREE.Color(config.sandColor) });
+  const plainHexagonMaterial = new THREE.MeshStandardMaterial({ flatShading: true, color: new THREE.Color(config.plainColor) });
+  const forestHexagonMaterial = new THREE.MeshStandardMaterial({ flatShading: true, color: new THREE.Color(config.forestColor) });
+  const stoneHexagonMaterial = new THREE.MeshStandardMaterial({ flatShading: true, color: new THREE.Color(config.stoneColor) });
+  const snowHexagonMaterial = new THREE.MeshStandardMaterial({ flatShading: true, color: new THREE.Color(config.snowColor) });
 
-  // Create an instanced mesh
+  // Create an instanced meshes
   const sandHexagons = createInstancedMesh(hexagonGeometry, sandHexagonMaterial, hexesData.length, sandHexes, waterHeight);
   const plainHexagons = createInstancedMesh(hexagonGeometry, plainHexagonMaterial, hexesData.length, plainHexes, waterHeight);
   const forestHexagons = createInstancedMesh(hexagonGeometry, forestHexagonMaterial, hexesData.length, forestHexes, waterHeight);
