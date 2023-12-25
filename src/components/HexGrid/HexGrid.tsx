@@ -1,24 +1,15 @@
 import * as THREE from 'three';
 import { extend } from '@react-three/fiber';
-import { useControls } from 'leva';
 
 import prepareInstancedHexes from '../../utils/prepareInstancedHexes';
 
 // Extend the mesh class with the instanced mesh class
 extend({ InstancedMesh: THREE.InstancedMesh });
 
-export default function HexGrid(props: { hexesData: { position: { x: number; y: number }; height: number }[]; waterHeight: number }) {
-  // Use the useControls hook to manage material colors
-  const config = useControls({
-    sandColor: 'sandybrown',
-    plainColor: 'green',
-    forestColor: 'darkgreen',
-    stoneColor: 'gray',
-    snowColor: 'white',
-  })
+export default function HexGrid(props: { hexesData: { position: { x: number; y: number }; height: number }[]; waterHeight: number; colors: { sandColor: string; plainColor: string; forestColor: string; stoneColor: string; snowColor: string } }) {
 
   // Destructure props
-  const { hexesData, waterHeight } = props;
+  const { hexesData, waterHeight, colors } = props;
 
   // Filter the hexes based on height
   const sandHexes = hexesData.filter(({ height }) => height < waterHeight+1);
@@ -28,11 +19,11 @@ export default function HexGrid(props: { hexesData: { position: { x: number; y: 
   const snowHexes = hexesData.filter(({ height }) => height >= waterHeight+20);
 
   // Create instanced meshes
-  const sandHexagons = prepareInstancedHexes(sandHexes, waterHeight, config.sandColor);
-  const plainHexagons = prepareInstancedHexes(plainHexes, waterHeight, config.plainColor);
-  const forestHexagons = prepareInstancedHexes(forestHexes, waterHeight, config.forestColor);
-  const stoneHexagons = prepareInstancedHexes(stoneHexes, waterHeight, config.stoneColor);
-  const snowHexagons = prepareInstancedHexes(snowHexes, waterHeight, config.snowColor);
+  const sandHexagons = prepareInstancedHexes(sandHexes, waterHeight, colors.sandColor);
+  const plainHexagons = prepareInstancedHexes(plainHexes, waterHeight, colors.plainColor);
+  const forestHexagons = prepareInstancedHexes(forestHexes, waterHeight, colors.forestColor);
+  const stoneHexagons = prepareInstancedHexes(stoneHexes, waterHeight, colors.stoneColor);
+  const snowHexagons = prepareInstancedHexes(snowHexes, waterHeight, colors.snowColor);
 
   return (
     <>

@@ -15,22 +15,36 @@ export default function App() {
     waterHeight: {value: 5, min: 0, max: 30, step: 1}, // Height of the water surface
     heightScale: {value: 1, min: 0.1, max: 2, step: 0.05}, // Scale for terrain height
     noiseScale: {value: 10, min: 1, max: 100, step: 1}, // Scale for the noise function
-    waterColor: '#0cc48d',
+    waterColor: 'dodgerblue',
+    sandColor: 'sandybrown',
+    plainColor: 'forestgreen',
+    forestColor: 'darkgreen',
+    stoneColor: 'gray',
+    snowColor: 'white',
     ambienLightColor: '#ffffff',
     autoRotate: false, // Whether to enable auto-rotation
     sky: false
   });
 
+  const colors = {
+    waterColor: config.waterColor,
+    sandColor: config.sandColor,
+    plainColor: config.plainColor,
+    forestColor: config.forestColor,
+    stoneColor: config.stoneColor,
+    snowColor: config.snowColor,
+    ambienLightColor: config.ambienLightColor
+  }
+
   return (
     <>
       <MapGenerator 
-        size ={config.size}
-        ambienLightColor={config.ambienLightColor}
-        waterHeight={config.waterHeight}
-        waterColor={config.waterColor}
-        hexesData={generateHexesData(config)} 
-        autoRotate={config.autoRotate}
-        showSky={config.sky}
+        size = {config.size}
+        waterHeight = {config.waterHeight}
+        hexesData = {generateHexesData(config)} 
+        autoRotate = {config.autoRotate}
+        showSky = {config.sky}
+        colors = {colors}
       />
     </>
   )
